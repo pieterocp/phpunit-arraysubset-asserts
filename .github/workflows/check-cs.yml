@@ -35,6 +35,11 @@ jobs:
         coverage: none
         tools: composer, cs2pr
 
+    # The DMS ruleset sets sniff properties which don't exist in the Slevomat version it installs.
+    # PHPCS < 3.8.0 silently ignores those, newer versions bail out with an error.
+    - name: 'Composer: pin PHPCS to a version compatible with the DMS ruleset'
+      run: composer require --dev --no-update squizlabs/php_codesniffer:"~3.7.2" --no-interaction
+
     - name: Install dependencies
       run: |
         composer update --prefer-dist --no-suggest --no-progress --no-interaction
