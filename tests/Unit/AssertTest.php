@@ -6,6 +6,7 @@ namespace DMS\PHPUnitExtensions\ArraySubset\Tests\Unit;
 
 use DMS\PHPUnitExtensions\ArraySubset\Assert;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\RequiresPhpunit;
 use PHPUnit\Framework\Exception as PHPUnitException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\InvalidArgumentException as PHPUnitInvalidArgumentException;
@@ -18,6 +19,7 @@ use function method_exists;
 /**
  * @requires PHPUnit >= 8
  */
+#[RequiresPhpunit('>= 8.0.0')]
 final class AssertTest extends TestCase
 {
     public function testAssertArraySubsetPassesStrictConfig(): void

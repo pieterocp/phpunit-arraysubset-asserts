@@ -16,6 +16,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @requires PHPUnit < 8
  */
+#[\PHPUnit\Framework\Attributes\RequiresPhpunit('< 8.0.0')]
 final class AutoloadExceptionTest extends TestCase
 {
     public function testAutoloadException()

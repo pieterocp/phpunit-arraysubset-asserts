@@ -187,11 +187,21 @@ jobs:
           - php: '8.4'
             phpunit: '11.3.6'
 
+          # PHPUnit 12 is fully supported for the officially supported PHP versions.
+          - php: '8.3'
+            phpunit: '12.0'
+          - php: '8.3'
+            phpunit: '12'
+          - php: '8.4'
+            phpunit: '12'
+
           # Experimental builds.
           - php: 'nightly'
             phpunit: '9'
           - php: 'nightly'
             phpunit: '11'
+          - php: 'nightly'
+            phpunit: '12'
 
     name: "PHAR test: PHP ${{ matrix.php }} - PHPUnit: ${{matrix.phpunit}}"
 
