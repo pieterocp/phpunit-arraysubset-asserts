@@ -11,10 +11,22 @@
     <file>src</file>
     <file>tests</file>
 
-    <rule ref="DMS">
+    <!--
+    The DMS standard, inlined. The published DMS ruleset sets DeclareStrictTypes properties which don't
+    exist in the Slevomat version it installs, which PHPCS 3.8.0+ rejects. The Doctrine defaults for that
+    sniff already match what DMS intends, so that block is left out.
+    -->
+    <rule ref="Doctrine">
+        <exclude name="Squiz.PHP.GlobalKeyword"/>
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
+        <properties>
+            <property name="spacesCountBeforeColon" value="0"/>
+        </properties>
     </rule>
 
     <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators.DisallowedEqualOperator">

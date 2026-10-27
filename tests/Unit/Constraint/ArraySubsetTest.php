@@ -8,6 +8,8 @@ use ArrayObject;
 use Countable;
 use DMS\PHPUnitExtensions\ArraySubset\ArrayAccessible;
 use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
+use PHPUnit\Framework\Attributes\DataProvider as DataProviderAttribute;
+use PHPUnit\Framework\Attributes\RequiresPhpunit;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Framework\TestCase;
@@ -20,6 +22,7 @@ use function sprintf;
 /**
  * @requires PHPUnit >= 8
  */
+#[RequiresPhpunit('>= 8.0.0')]
 final class ArraySubsetTest extends TestCase
 {
     /**
@@ -64,6 +67,7 @@ final class ArraySubsetTest extends TestCase
      *
      * @dataProvider evaluateDataProvider
      */
+    #[DataProviderAttribute('evaluateDataProvider')]
     public function testEvaluate(bool $expected, $subset, $other, bool $strict): void
     {
         $constraint = new ArraySubset($subset, $strict);
