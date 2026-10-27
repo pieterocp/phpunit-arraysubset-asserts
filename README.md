@@ -75,3 +75,19 @@ final class ExampleTest extends TestCase
     }
 }
 ```
+
+## Native alternatives in PHPUnit 11+
+
+PHPUnit 11.0 introduced `assertArrayIsEqualToArrayOnlyConsideringListOfKeys()` and
+`assertArrayIsIdenticalToArrayOnlyConsideringListOfKeys()`. For a **flat** subset, these can be used instead:
+
+```php
+self::assertArrayIsEqualToArrayOnlyConsideringListOfKeys($subset, $actual, array_keys($subset));
+```
+
+They are not a drop-in replacement for `assertArraySubset()` though:
+
+* Only top-level keys are filtered, so nested arrays must match exactly rather than being checked as a subset.
+* The "Equal" variant uses `isset()`, so an expected `null` value is treated as missing and passes against an array without that key.
+* The "Identical" variant compares key order, whereas `assertArraySubset()` with `$checkForObjectIdentity = true` does not.
+* Only plain arrays are accepted, not `ArrayAccess` or `Traversable` objects.
