@@ -91,3 +91,7 @@ They are not a drop-in replacement for `assertArraySubset()` though:
 * The "Equal" variant uses `isset()`, so an expected `null` value is treated as missing and passes against an array without that key.
 * The "Identical" variant compares key order, whereas `assertArraySubset()` with `$checkForObjectIdentity = true` does not.
 * Only plain arrays are accepted, not `ArrayAccess` or `Traversable` objects.
+
+PHPUnit 13 added further array assertions (`assertArraysAreEqual()`, `assertArraysAreIdenticalIgnoringOrder()`,
+`assertArraysHaveEqualValues()` and their variants). These compare the arrays as a whole, so any extra key in the
+actual array causes a failure; none of them can be used to check for a subset.

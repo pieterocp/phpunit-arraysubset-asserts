@@ -195,13 +195,21 @@ jobs:
           - php: '8.4'
             phpunit: '12'
 
-          # Experimental builds.
+          # PHPUnit 13 is fully supported for the officially supported PHP versions.
+          # Caveats:
+          # - PHPUnit 13 requires PHP 8.4.1+.
+          - php: '8.4'
+            phpunit: '13.0'
+          - php: '8.4'
+            phpunit: '13'
           - php: 'nightly'
             phpunit: '9'
           - php: 'nightly'
             phpunit: '11'
           - php: 'nightly'
             phpunit: '12'
+          - php: 'nightly'
+            phpunit: '13'
 
     name: "PHAR test: PHP ${{ matrix.php }} - PHPUnit: ${{matrix.phpunit}}"
 
